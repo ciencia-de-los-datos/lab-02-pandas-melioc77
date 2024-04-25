@@ -54,11 +54,10 @@ def pregunta_03():
 
     """
 
-    #series = pd.Series(a, name='_c1')
-    #tbl0.groupby("_c1").count
+
     return tbl0["_c1"].value_counts().sort_index()
 
-#print(pregunta_03())
+
 def pregunta_04():
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
@@ -177,8 +176,7 @@ def pregunta_10():
     df = pd.DataFrame(table)
     
     return df
-#print(pregunta_10())
-#print(pregunta_10())
+
 def pregunta_11():
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
@@ -198,7 +196,7 @@ def pregunta_11():
     table = tbl1.groupby("_c0")["_c4"].apply(lambda x: ",".join(sorted(x)))
     table = table.reset_index()
     return table
-#print(pregunta_11())
+
 
 def pregunta_12():
     """
@@ -215,9 +213,8 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    
     return tbl2.groupby("_c0").apply(lambda x: ",".join(sorted(x["_c5a"] + ":" + x["_c5b"].astype(str)))).reset_index().rename(columns={0:"_c5"})
-#print(pregunta_12())
+
 
 def pregunta_13():
     """
@@ -237,4 +234,3 @@ def pregunta_13():
     table = pd.merge(tbl, tbl2, sort=True)
     table = table.groupby("_c1")["_c5b"].sum()
     return table
-#print(pregunta_13())
