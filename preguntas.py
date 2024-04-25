@@ -57,7 +57,6 @@ def pregunta_03():
 
     return tbl0["_c1"].value_counts().sort_index()
 
-
 def pregunta_04():
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
