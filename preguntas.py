@@ -17,28 +17,23 @@ tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
 
 def pregunta_01():
 
-    A1=len(tbl0)
-    return A1
+    a = tbl0.shape[0]
+    return a
 
-#Answer_1=print(pregunta_01())
 
 
 def pregunta_02():
     
-    A2=len(tbl0.columns)
-    return A2
+    a = tbl0.shape[1]
+    return a
 
-#Answer_2=print(pregunta_02())
 
 
 def pregunta_03():
 
-    A3=tbl0['_c1'].value_counts()
-    A3.rename('_c1', inplace=True)
-    A3=A3.sort_index()
-    return A3
+    return tbl0["_c1"].value_counts().sort_index()
 
-print(pregunta_03())
+
 
 
 def pregunta_04():
