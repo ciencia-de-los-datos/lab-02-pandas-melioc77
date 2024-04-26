@@ -86,28 +86,27 @@ def pregunta_09():
 
 def pregunta_10():
 
-    A10=tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str))))
-    A10.columns=['_c0', '_c1']
-    A10=pd.DataFrame(A10)
-    return A10
+    table=tbl0.groupby("_c1")["_c2"].apply(lambda x: ":".join(map(str, sorted(list(x)))))
+    df = pd.DataFrame(table)
+    
+    return df
 
 #Answer_10=print(pregunta_10())
 
 
 def pregunta_11():
 
-    A11=tbl1.groupby('_c0')['_c4'].apply(lambda x: ','.join(sorted(x))).reset_index()
-    A11.columns=['_c0', '_c4']
-    return A11
+    table = tbl1.groupby("_c0")["_c4"].apply(lambda x: ",".join(sorted(x)))
+    table = table.reset_index()
+    return table
     
 #Answer_11=print(pregunta_11())
 
 
 def pregunta_12():
 
-    tbl2['_c5']=tbl2['_c5a']+':'+tbl2['_c5b'].astype(str)
-    A12=tbl2.groupby('_c0')['_c5'].apply(lambda x: ','.join(sorted(x))).reset_index()
-    return A12
+    return tbl2.groupby("_c0").apply(lambda x: ",".join(sorted(x["_c5a"] + ":" + x["_c5b"].astype(str)))).reset_index().rename(columns={0:"_c5"})
+
    
 #Answer_12=print(pregunta_12())
 
@@ -115,8 +114,9 @@ def pregunta_12():
 
 def pregunta_13():
    
-    combined = pd.merge(tbl0, tbl2, on='_c0')
-    A13=combined.groupby('_c1')['_c5b'].sum()
-    return A13
+    tbl = tbl0[["_c0", "_c1"]]
+    table = pd.merge(tbl, tbl2, sort=True)
+    table = table.groupby("_c1")["_c5b"].sum()
+    return table
 
 #Answer_13=print(pregunta_13())
