@@ -38,50 +38,48 @@ def pregunta_03():
 
 def pregunta_04():
 
-    A4=tbl0.groupby('_c1')['_c2'].mean()
-    return A4
+    return tbl0.groupby("_c1")["_c2"].mean().sort_index()
+
     
 #Answer_4=print(pregunta_04())
 
 
 def pregunta_05():
 
-    A5=tbl0.groupby('_c1')['_c2'].max()
-    return A5
+    return tbl0.groupby("_c1")["_c2"].max().sort_index()
+
 
 #Answer_5=print(pregunta_05())
 
 
 def pregunta_06():
 
-    A6=tbl1['_c4'].unique()
-    A6=[element.upper() for element in A6]
-    A6=sorted(A6)
-    return A6
+    return  tbl1["_c4"].str.upper().sort_values().unique().tolist()
+
 
 #Answer_6=print(pregunta_06())
 
 
 def pregunta_07():
 
-    A7=tbl0.groupby('_c1')['_c2'].sum()
-    return A7
+    return tbl0.groupby("_c1")["_c2"].sum().sort_index()
+   
 
 #Answer_7=print(pregunta_07())
 
 
 def pregunta_08():
 
-    tbl0['suma']=tbl0['_c0']+tbl0['_c2']
-    return tbl0
+    a = tbl0["_c0"] + tbl0["_c2"]
+    return tbl0.assign(suma=a)
 
 #Answer_8=print(pregunta_08())
 
 
 def pregunta_09():
 
-    tbl0['year']=tbl0['_c3'].str.split('-').str[0]
-    return tbl0
+    return tbl0.assign(year=tbl0["_c3"].str.split("-").str[0])
+
    
 #Answer_9=print(pregunta_09())
 
